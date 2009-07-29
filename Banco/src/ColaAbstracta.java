@@ -9,17 +9,17 @@
  */
 public abstract class ColaAbstracta<E> implements InterfazCola{
 
-    int limite = 10, cantidad = 0;
+    int limite, cantidad;
+
+    public void agregar(Object dato) {
+        cantidad ++;
+    }
 
     public void agregarPrimero(Object dato) {
         cantidad ++;
     }
 
-    public void agregarUltimo(Object dato) {
-        cantidad ++;
-    }
-
-    public Object removerUltimo() {
+    public Object remover() {
         cantidad --;
         return null;
     }
