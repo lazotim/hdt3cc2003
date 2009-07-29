@@ -20,12 +20,12 @@ public class Main {
         InterfazCola cola = new ColaListasC();
 
         System.out.println("Ingrese: ");
-        cola.agregarPrimero(lector.next());
-        cola.agregarPrimero(lector.next());
-        cola.agregarPrimero(lector.next());
-        System.out.println(cola.removerUltimo());
-        System.out.println(cola.removerUltimo());
-        System.out.println(cola.removerUltimo());
+        cola.agregar(lector.next());
+        cola.agregar(lector.next());
+        cola.agregar(lector.next());
+        System.out.println(cola.remover());
+        System.out.println(cola.remover());
+        System.out.println(cola.remover());
     }
 
 }

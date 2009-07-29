@@ -9,11 +9,11 @@
  */
 public interface InterfazCola<E> {
 
+    public void agregar(E dato);
+
+
     public void agregarPrimero(E dato);
 
-
-    public void agregarUltimo(E dato);
-
-    public E removerUltimo();
+    public E remover();
 
 }
