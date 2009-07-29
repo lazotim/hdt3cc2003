@@ -7,11 +7,11 @@
  *
  * @author dvdhl89
  */
-public class Usuario {
+public class Cliente {
 
     private int t1, t2;
 
-    public Usuario() {
+    public Cliente() {
         t1 = (int) (Math.random() * 120 + 1);
         t2 = (int) (Math.random() * 30 + 1);
     }
