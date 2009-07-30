@@ -16,6 +16,7 @@ public class ColaArreglos<E> extends ColaAbstracta {
         cantidad = 0;
         this.limite = limite;
         elementos = new Object[limite];
+        elementos[0] = null;
         inicio = 0;
         fin = 0;
 
@@ -23,9 +24,16 @@ public class ColaArreglos<E> extends ColaAbstracta {
 
     @Override
     public void agregar(Object dato) {
-        if(inicio < limite) {
-            elementos[fin] = dato;
-            fin++;
+        if(inicio == fin && cantidad == 0) {
+            elementos[inicio] = dato;
+        } else if(fin >= limite) {
+            if(elementos[0] == null) {
+                inicio = fin;
+                fin = 0;
+            }
+        } else {
+            fin ++;
+            inicio ++;
         }
         
     }
