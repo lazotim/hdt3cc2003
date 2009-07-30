@@ -14,6 +14,6 @@ public interface InterfazCola<E> {
 
     public void agregarPrimero(E dato);
 
-    public E remover();
+    public E retirar();
 
 }

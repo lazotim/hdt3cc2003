@@ -19,7 +19,7 @@ public abstract class ColaAbstracta<E> implements InterfazCola{
         cantidad ++;
     }
 
-    public Object remover() {
+    public Object retirar() {
         cantidad --;
         return null;
     }

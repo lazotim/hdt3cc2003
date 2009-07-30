@@ -14,7 +14,7 @@ public class Banco {
     public Banco() {
         colas = new ColaListasC[4];
         for(InterfazCola a: colas) {
-            a = new ColaListasC();
+           // a = new ColaListasC();
         }
     }
 
