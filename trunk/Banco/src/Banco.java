@@ -9,7 +9,7 @@
  */
 public class Banco {
 
-    private InterfazCola[] colas;
+    private ColaAbstracta[] colas;
     private Cliente[] clientes;
     private final int LIMITECOLA = 5;
     private Cliente clienteT;
@@ -18,8 +18,8 @@ public class Banco {
     public Banco() {
         colas = new ColaListasC[4];
         clientes = new Cliente[10];
-        for(InterfazCola a: colas) {
-            a = new ColaListasC(LIMITECOLA);
+        for(int i = 0; i < colas.length; i++) {
+            colas[i] = new ColaListasC(LIMITECOLA);
         }
 
         for(int i = 0; i < clientes.length; i++) {
@@ -32,7 +32,7 @@ public class Banco {
                 if(clientes[i].getT1() > clientes[j].getT1()) {
                     System.out.println(clientes[i].getT1());
                    
-                    clienteT = clientes[i];
+                   
                     
                     
                     clientes[i] = clientes[j];
@@ -40,8 +40,16 @@ public class Banco {
                 }
             }
 
-        //for(Cliente c: clientes)
-        //    System.out.println(c.getT1());
+        
+
+        for(Cliente c: clientes) {
+            int menor = 0;
+            for(int i = 0; i < colas.length; i++) {
+                if(colas[i].cantidad() < menor)
+                    menor = i;
+                colas[i].agregar(c);
+            }
+        }
 
         for(int i = 0; i < clientes.length; i++)
             System.out.println(clientes[i].getT1());

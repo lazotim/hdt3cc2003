@@ -28,5 +28,18 @@ public class Cliente {
     public int getT2() {
         return t2;
     }
+/*
+    public void setT1(int t1) {
+        this.t1 = t1;
+    }
 
+    public void setT2(int t2) {
+        this.t2 = t2;
+    }
+
+    public void copiar(Cliente c) {
+        t1 = c.getT1();
+        t2 = c.getT2();
+    }
+*/
 }
