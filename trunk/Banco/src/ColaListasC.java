@@ -22,7 +22,7 @@ public class ColaListasC<E> extends ColaAbstracta<E> {
 
         try {
             if(!lleno()) {
-                Nodo<E> temp = new Nodo<E>((E) dato);
+                Nodo<E> temp = new Nodo(dato);
 
                 if(cola == null) {
                     cola = temp;
@@ -70,7 +70,7 @@ public class ColaListasC<E> extends ColaAbstracta<E> {
 
         cantidad --;
 
-        return temp.dato();
+        return (E)temp.dato();
     }
 
 
