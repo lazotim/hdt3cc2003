@@ -9,7 +9,7 @@
  */
 public abstract class ColaAbstracta<E> implements InterfazCola{
 
-    int limite, cantidad;
+    protected int limite, cantidad;
 
     public void agregar(Object dato) {
         cantidad ++;
@@ -30,5 +30,9 @@ public abstract class ColaAbstracta<E> implements InterfazCola{
         if(cantidad == 0)
             return true;
         return false;
+    }
+
+    public int cantidad() {
+        return cantidad;
     }
 }
