@@ -12,7 +12,7 @@ public class Cliente {
     private int t1, t2;
 
     public Cliente() {
-        t1 = (int) (Math.random() * 120 + 1);
+        t1 = (int) (Math.random() * 480 + 1);
         t2 = (int) (Math.random() * 30 + 1);
     }
 
