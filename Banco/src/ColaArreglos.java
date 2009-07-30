@@ -24,15 +24,24 @@ public class ColaArreglos<E> extends ColaAbstracta {
 
     @Override
     public void agregar(Object dato) {
-        if(cantidad < limite) {
-            if(fin >= limite)
-                fin = 0;
-            elementos[fin] = dato;
-            cantidad ++;
-            fin++;
+        try {
+            if(cantidad < limite) {
+                if(fin >= limite)
+                    fin = 0;
+                elementos[fin] = dato;
+                cantidad ++;
+                fin++;
+            } else if(cantidad >= limite) {
+                throw new FullException("Cola llena");
+            }
         }
-        for(Object o: elementos)
-            System.out.println(o);
+        catch (FullException fe) {
+            System.out.println("ERROR, cola  llena");
+
+        }
+        
+        //for(Object o: elementos)
+        //    System.out.println(o);
         
         
     }

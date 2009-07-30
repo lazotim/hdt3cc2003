@@ -43,12 +43,13 @@ public class Banco {
         
 
         for(Cliente c: clientes) {
-            int menor = 0;
+            int menor = 0, cantM = colas[0].cantidad();
             for(int i = 0; i < colas.length; i++) {
-                if(colas[i].cantidad() < menor)
+                if(colas[i].cantidad() < cantM)
                     menor = i;
-                colas[i].agregar(c);
             }
+            colas[menor].agregar(c);
+            System.out.println("Se agrego" + c.getT1() + " a " + menor);
         }
 
         for(int i = 0; i < clientes.length; i++)

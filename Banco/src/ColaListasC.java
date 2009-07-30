@@ -20,19 +20,30 @@ public class ColaListasC<E> extends ColaAbstracta<E> {
     @Override
     public void agregar(Object dato) {
 
-        if(!lleno()) {
-            Nodo<E> temp = new Nodo<E>((E) dato);
+        try {
+            if(!lleno()) {
+                Nodo<E> temp = new Nodo<E>((E) dato);
 
-            if(cola == null) {
-                cola = temp;
-                cola.setProximo(cola);
-            }
-            else {
-                temp.setProximo(cola.getProximo());
-                cola.setProximo(temp);
-            }
+                if(cola == null) {
+                    cola = temp;
+                    cola.setProximo(cola);
+                }
+                else {
+                    temp.setProximo(cola.getProximo());
+                    cola.setProximo(temp);
+                }
 
-            cantidad ++;
+                cantidad ++;
+
+            }
+        
+            else if(lleno())
+                throw new FullException("Cola llena");
+        }
+        
+        catch (FullException fe) {
+            System.out.println("ERROR, cola  llena");
+            
         }
     }
 
