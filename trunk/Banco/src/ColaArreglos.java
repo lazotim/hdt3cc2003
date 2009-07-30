@@ -10,12 +10,12 @@
 public class ColaArreglos<E> extends ColaAbstracta {
 
     private Object[] elementos;
-    private int inicio, fin;
+    private int inicio, fin, indice;
 
     public ColaArreglos(int limite) {
         cantidad = 0;
         this.limite = limite;
-        elementos = new Object[limite];
+        elementos = new Object[this.limite];
         elementos[0] = null;
         inicio = 0;
         fin = 0;
@@ -24,24 +24,30 @@ public class ColaArreglos<E> extends ColaAbstracta {
 
     @Override
     public void agregar(Object dato) {
-        if(inicio == fin && cantidad == 0) {
-            elementos[inicio] = dato;
-        } else if(fin >= limite) {
-            if(elementos[0] == null) {
-                inicio = fin;
+        if(cantidad < limite) {
+            if(fin >= limite)
                 fin = 0;
-            }
-        } else {
-            fin ++;
-            inicio ++;
+            elementos[fin] = dato;
+            cantidad ++;
+            fin++;
         }
+        for(Object o: elementos)
+            System.out.println(o);
+        
         
     }
 
     @Override
-    public Object remover() {
-        if(inicio >= 0)
-            return elementos[fin];
+    public Object retirar() {
+        if(cantidad > 0) {
+            if(inicio >= limite)
+                inicio = 0;
+            inicio ++;
+            cantidad --;
+            return elementos[inicio-1];
+        }
+        else
+            return null;
     }
 
 }

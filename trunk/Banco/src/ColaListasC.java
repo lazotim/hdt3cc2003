@@ -10,29 +10,33 @@
 public class ColaListasC<E> extends ColaAbstracta<E> {
 
     private Nodo<E> cola;
-    private int cont;
 
     public ColaListasC(int limite) {
         cantidad = 0;
         this.limite = limite;
         cola = null;
-        cont = 0;
     }
 
     @Override
     public void agregar(Object dato) {
-        Nodo<E> temp = new Nodo<E>((E) dato);
 
-        if(cola == null) {
-            cola = temp;
-            cola.setProximo(cola);
-        }
-        else {
-            temp.setProximo(cola.getProximo());
-            cola.setProximo(temp);
+        if(!lleno()) {
+            Nodo<E> temp = new Nodo<E>((E) dato);
+
+            if(cola == null) {
+                cola = temp;
+                cola.setProximo(cola);
+            }
+            else {
+                temp.setProximo(cola.getProximo());
+                cola.setProximo(temp);
+            }
+
+            cantidad ++;
         }
     }
 
+    
     @Override
     public void agregarPrimero(Object dato) {
         agregar(dato);
@@ -40,7 +44,11 @@ public class ColaListasC<E> extends ColaAbstracta<E> {
     }
 
     @Override
-    public E remover() {
+    public E retirar() {
+
+        if(vacio())
+            return null;
+
         Nodo<E> finger = cola;
 
         while(finger.getProximo() != cola) {
@@ -56,7 +64,7 @@ public class ColaListasC<E> extends ColaAbstracta<E> {
             cola = finger;
         }
 
-        cont --;
+        cantidad --;
 
         return temp.dato();
     }

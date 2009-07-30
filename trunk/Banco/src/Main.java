@@ -17,15 +17,32 @@ public class Main {
      */
     public static void main(String[] args) {
         Scanner lector = new Scanner(System.in);
-        InterfazCola cola = new ColaListasC();
+        InterfazCola<String> cola = new ColaListasC(7);
+        int opcion = ' ';
 
-        System.out.println("Ingrese: ");
-        cola.agregar(lector.next());
-        cola.agregar(lector.next());
-        cola.agregar(lector.next());
-        System.out.println(cola.remover());
-        System.out.println(cola.remover());
-        System.out.println(cola.remover());
+        
+
+        while (opcion != 's') {
+
+
+
+          System.out.println("a: Agregar, r: Retirar, s: Salir");
+          opcion = lector.next().charAt(0);
+
+          switch(opcion) {
+              case 'a':
+                  cola.agregar(lector.next());
+              break;
+
+              case 'r':
+                  System.out.println(cola.retirar());
+              break;
+
+              default:
+                  System.out.println("O incorrecta");
+          }
+    
+        }
     }
 
 }
