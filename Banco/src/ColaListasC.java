@@ -73,6 +73,13 @@ public class ColaListasC<E> extends ColaAbstracta<E> {
         return (E)temp.dato();
     }
 
+    public E verPrimero() {
+        if(vacio())
+            return null;
+
+        return (E)cola.dato();
+    }
+
 
 
 }
