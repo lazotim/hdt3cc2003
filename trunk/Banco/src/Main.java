@@ -4,6 +4,7 @@
 //David Ytzen Hsieh Lo #08825
 
 
+import java.util.Random;
 import java.util.Scanner;
 
 /**
@@ -18,6 +19,11 @@ public class Main {
     public static void main(String[] args) {
         Scanner lector = new Scanner(System.in);
         Banco banco = new Banco();
+
+        Random random = new Random();
+        
+        //for(int i = 0; i < 10; i++)
+        //    System.out.println(random.nextInt(200));
 
 
         /*
