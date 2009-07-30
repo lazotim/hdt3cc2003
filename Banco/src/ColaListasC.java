@@ -36,13 +36,6 @@ public class ColaListasC<E> extends ColaAbstracta<E> {
         }
     }
 
-    
-    @Override
-    public void agregarPrimero(Object dato) {
-        agregar(dato);
-        cola = cola.getProximo();
-    }
-
     @Override
     public E retirar() {
 

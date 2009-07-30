@@ -15,10 +15,6 @@ public abstract class ColaAbstracta<E> implements InterfazCola{
         cantidad ++;
     }
 
-    public void agregarPrimero(Object dato) {
-        cantidad ++;
-    }
-
     public Object retirar() {
         cantidad --;
         return null;

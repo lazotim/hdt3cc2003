@@ -17,6 +17,10 @@ public class Main {
      */
     public static void main(String[] args) {
         Scanner lector = new Scanner(System.in);
+        Banco banco = new Banco();
+
+
+        /*
         InterfazCola<String> cola = new ColaListasC(7);
         int opcion = ' ';
 
@@ -42,7 +46,7 @@ public class Main {
                   System.out.println("O incorrecta");
           }
     
-        }
+        }*/
     }
 
 }
