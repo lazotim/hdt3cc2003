@@ -53,5 +53,18 @@ public class ColaListasCTest {
         Object expResult = "PRIMERO";
         assertEquals(expResult, result);
     }
+    
+    @Test
+    public void testVerPrimero() {
+        System.out.println("verPrimero");
+        ColaAbstracta instance = new ColaListasC(3);
+        instance.agregar("PRIMERO");
+        instance.agregar("SEGUNDO");
+        instance.agregar("TERCERO");
+        Object result = instance.verPrimero();
+        Object expResult = "PRIMERO";
+        assertEquals(expResult, result);
+    }
+
 
 }

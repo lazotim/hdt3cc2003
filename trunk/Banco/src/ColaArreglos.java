@@ -47,16 +47,22 @@ public class ColaArreglos<E> extends ColaAbstracta {
     }
 
     @Override
-    public Object retirar() {
+    public E retirar() {
         if(cantidad > 0) {
             if(inicio >= limite)
                 inicio = 0;
             inicio ++;
             cantidad --;
-            return elementos[inicio-1];
+            return (E)elementos[inicio-1];
         }
         else
             return null;
+    }
+
+    public E verPrimero() {
+        if(cantidad >0)
+            return (E)elementos[inicio];
+        return null;
     }
 
 }

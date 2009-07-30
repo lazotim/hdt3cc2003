@@ -53,4 +53,16 @@ public class ColaArreglosTest {
         assertEquals(expResult, result);
     }
 
+    @Test
+    public void verPrimero() {
+        System.out.println("VerUltimo");
+        ColaArreglos instance = new ColaArreglos(3);
+        instance.agregar("PRIMERO");
+        instance.agregar("SEGUNDO");
+        instance.agregar("TERCERO");
+        Object result = instance.verPrimero();
+        Object expResult = "PRIMERO";
+        assertEquals(expResult, result);
+    }
+
 }

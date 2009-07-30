@@ -13,4 +13,6 @@ public interface InterfazCola<E> {
 
     public E retirar();
 
+    public E verPrimero();
+
 }

@@ -44,14 +44,44 @@ public class Banco {
         
         for(Cliente c: clientes)
             colaTemp.agregar(c);
-
-        
         
         for(int i =0; i < clientes.length; i++)
             System.out.println(colaTemp.retirar().getT1());
         
-
+       
         
+        
+    }
+
+    public void agregarCliente(Cliente cliente) {
+
+        int colaVacia = 0;
+
+        if(!colas[0].lleno() || !colas[1].lleno() || !colas[2].lleno() || !colas[3].lleno()) {
+
+
+            for(int i =0; i < colas.length; i++) {
+                if(colas[i].cantidad() < colaVacia) {
+                    colaVacia = i;
+                }
+            }
+
+            colas[colaVacia].agregar(cliente);
+
+            System.out.println("Cliente " + cliente + " ingresado en cola #" + (colaVacia+1) );
+
+        }
+        
+    }
+
+    public void sacarCliente() {
+
+        for(ColaAbstracta<Cliente> c: colas) {
+            if((c.verPrimero().getT1() + c.verPrimero().getT2()) < colaTemp.verPrimero().getT1()) {
+                c.retirar();
+            }
+        }
+
         
     }
 

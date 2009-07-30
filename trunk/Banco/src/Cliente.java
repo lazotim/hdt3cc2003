@@ -28,6 +28,10 @@ public class Cliente {
     public int getT2() {
         return t2;
     }
+
+    public String toString() {
+        return "t1: "+t1 +", t2: " + t2;
+    }
 /*
     public void setT1(int t1) {
         this.t1 = t1;
