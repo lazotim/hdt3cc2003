@@ -12,14 +12,14 @@ public class Banco {
     private ColaAbstracta<Cliente>[] colas;
     private ColaAbstracta<Cliente> colaTemp;
     private Cliente[] clientes;
-    private final int LIMITECOLA = 5;
+    private final int LIMITECOLA = 10;
     private Cliente clienteT;
 
 
     public Banco() {
         colas = new ColaListasC[4];
         colaTemp = new ColaListasC(50);
-        clientes = new Cliente[10];
+        clientes = new Cliente[50];
         for(int i = 0; i < colas.length; i++) {
             colas[i] = new ColaListasC(LIMITECOLA);
         }
@@ -45,8 +45,8 @@ public class Banco {
         for(Cliente c: clientes)
             colaTemp.agregar(c);
         
-        for(int i =0; i < clientes.length; i++)
-            System.out.println(colaTemp.retirar().getT1());
+        //for(int i =0; i < clientes.length; i++)
+         //   System.out.println(colaTemp.retirar().getT1());
         
        
         
@@ -75,11 +75,24 @@ public class Banco {
     }
 
     public void sacarCliente() {
+        if(!colas[0].vacio() || !colas[1].vacio() || !colas[2].vacio() || !colas[3].vacio()) {
+            for(ColaAbstracta<Cliente> c: colas) {
+                if(!c.vacio())
+                    if((c.verPrimero().getT1() + c.verPrimero().getT2()) < colaTemp.verPrimero().getT1()) {
+                        System.out.println("Cliente " + c.verPrimero() + " se ha retirado");
 
-        for(ColaAbstracta<Cliente> c: colas) {
-            if((c.verPrimero().getT1() + c.verPrimero().getT2()) < colaTemp.verPrimero().getT1()) {
-                c.retirar();
+                        c.retirar();
+                    }
+
             }
+        }
+    }
+
+    public void avanzar() {
+        
+        while(!colaTemp.vacio()) {
+            sacarCliente();
+            agregarCliente(colaTemp.retirar());
         }
 
         

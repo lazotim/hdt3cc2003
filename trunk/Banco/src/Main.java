@@ -21,6 +21,8 @@ public class Main {
         Banco banco = new Banco();
 
         Random random = new Random();
+
+        banco.avanzar();
         
         //for(int i = 0; i < 10; i++)
         //    System.out.println(random.nextInt(200));
