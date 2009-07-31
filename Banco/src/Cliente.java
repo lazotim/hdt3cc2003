@@ -14,11 +14,13 @@ public class Cliente {
 
     private int t1, t2;
     private Random random;
+    private String nombre;
 
     public Cliente() {
+        
         random = new Random();
-        t1 = random.nextInt(480);
-        t2 = random.nextInt(30);
+        t1 = random.nextInt(480) + 1;
+        t2 = random.nextInt(30) + 1;
     }
 
     public int getT1() {
@@ -30,7 +32,7 @@ public class Cliente {
     }
 
     public String toString() {
-        return "t1: "+t1 +", t2: " + t2;
+        return "("+t1 +", " + t2 + ")";
     }
 /*
     public void setT1(int t1) {
