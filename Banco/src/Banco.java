@@ -1,3 +1,6 @@
+
+import java.util.Scanner;
+
 /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
@@ -11,13 +14,15 @@ public class Banco {
 
     private ColaAbstracta<Cliente>[] colas;
     private ColaAbstracta<Cliente> colaTemp;
+    private ColaAbstracta<String> listaEventos;
     private Cliente[] clientes;
-    private final int LIMITECOLA = 10, CANTIDADCLIENTES = 1000;
+    private final int LIMITECOLA = 10, CANTIDADCLIENTES = 50;
     private Cliente clienteT;
     private int clientesEspera, clientesEnBanco;
 
 
     public Banco() {
+        listaEventos = new ColaListasC(CANTIDADCLIENTES *2);
         colas = new ColaListasC[4];
         colaTemp = new ColaListasC(CANTIDADCLIENTES);
         clientes = new Cliente[CANTIDADCLIENTES];
@@ -70,6 +75,7 @@ public class Banco {
                 clientesEnBanco ++;
 
                 System.out.println("Cliente " + cliente + " ingresado en cola #" + (colaVacia+1) );
+                listaEventos.agregar("Cliente " + cliente + " ingresado en cola #" + (colaVacia+1) );
             }
             else
             {
@@ -84,7 +90,9 @@ public class Banco {
             }
             catch (FullException FE) {
                 System.out.println("El banco se ha llenado");
+                listaEventos.agregar("El banco se ha llenado");                
                 System.out.println("Todos los clientes que quedaron fuera se han ido");
+                listaEventos.agregar("Todos los clientes que quedaron fuera se han ido");
             }
 
         }
@@ -98,6 +106,7 @@ public class Banco {
                     if(clientesEspera >0) {
                         if((c.verPrimero().getT1() + c.verPrimero().getT2()) < colaTemp.verPrimero().getT1()) {
                             System.out.println("Cliente " + c.verPrimero() + " se ha retirado");
+                            listaEventos.agregar("Cliente " + c.verPrimero() + " se ha retirado");
 
                             c.retirar();
                             clientesEnBanco --;
@@ -105,6 +114,7 @@ public class Banco {
                     }
                     else {
                         System.out.println("Cliente " + c.verPrimero() + " se ha retirado");
+                        listaEventos.agregar("Cliente " + c.verPrimero() + " se ha retirado");
                         c.retirar();
                         clientesEnBanco--;
                         
@@ -118,11 +128,20 @@ public class Banco {
     public void avanzar() {
         
          while(clientesEnBanco + clientesEspera > 0) {
-            //sacarCliente();
-            agregarCliente(colaTemp.retirar());
             sacarCliente();
+            agregarCliente(colaTemp.retirar());
             
+            //sacarCliente();
+//
+  //          System.out.println(colas[0].cantidad());
+    //        System.out.println(colas[1].cantidad());
+      //      System.out.println(colas[2].cantidad());
+        //    System.out.println(colas[3].cantidad());
+
         }
+
+         while(!listaEventos.vacio())
+             System.out.println(listaEventos.retirar());
         
 
         

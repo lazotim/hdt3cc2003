@@ -57,9 +57,12 @@ public class ColaArreglos<E> extends ColaAbstracta {
     }
 
     public E verPrimero() {
-        if(cantidad >0)
-            return (E)elementos[inicio];
-        return null;
+        if(vacio())
+            return null;
+        if(inicio >= limite)
+            inicio = 0;
+        return (E)elementos[inicio];
+        
     }
 
 }
