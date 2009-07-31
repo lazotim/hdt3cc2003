@@ -14,12 +14,15 @@ public class Banco {
     private Cliente[] clientes;
     private final int LIMITECOLA = 10;
     private Cliente clienteT;
+    private int clientesEspera, clientesEnBanco;
 
 
     public Banco() {
         colas = new ColaListasC[4];
         colaTemp = new ColaListasC(50);
         clientes = new Cliente[50];
+        clientesEspera = 50;
+        clientesEnBanco = 0;
         for(int i = 0; i < colas.length; i++) {
             colas[i] = new ColaListasC(LIMITECOLA);
         }
@@ -56,17 +59,17 @@ public class Banco {
     public void agregarCliente(Cliente cliente) {
 
         int colaVacia = 0;
-
-        if(!colas[0].lleno() || !colas[1].lleno() || !colas[2].lleno() || !colas[3].lleno()) {
-
-
+        
+        if(clientesEspera >0) {
             for(int i =0; i < colas.length; i++) {
-                if(colas[i].cantidad() < colaVacia) {
+                if(colas[i].cantidad() <= colas[colaVacia].cantidad()) {
                     colaVacia = i;
                 }
             }
 
             colas[colaVacia].agregar(cliente);
+            clientesEspera --;
+            clientesEnBanco ++;
 
             System.out.println("Cliente " + cliente + " ingresado en cola #" + (colaVacia+1) );
 
@@ -75,13 +78,21 @@ public class Banco {
     }
 
     public void sacarCliente() {
-        if(!colas[0].vacio() || !colas[1].vacio() || !colas[2].vacio() || !colas[3].vacio()) {
+        if(clientesEnBanco > 0) {
             for(ColaAbstracta<Cliente> c: colas) {
                 if(!c.vacio())
-                    if((c.verPrimero().getT1() + c.verPrimero().getT2()) < colaTemp.verPrimero().getT1()) {
-                        System.out.println("Cliente " + c.verPrimero() + " se ha retirado");
+                    if(clientesEspera >0) {
+                        if((c.verPrimero().getT1() + c.verPrimero().getT2()) < colaTemp.verPrimero().getT1()) {
+                            System.out.println("Cliente " + c.verPrimero() + " se ha retirado");
 
+                            c.retirar();
+                            clientesEnBanco --;
+                        }
+                    }
+                    else {
                         c.retirar();
+                        clientesEnBanco--;
+                        System.out.println("Cliente " + c.verPrimero() + " se ha retirado");
                     }
 
             }
@@ -90,10 +101,15 @@ public class Banco {
 
     public void avanzar() {
         
-        while(!colaTemp.vacio()) {
-            sacarCliente();
+         while(clientesEnBanco + clientesEspera > 0) {
+            //sacarCliente();
             agregarCliente(colaTemp.retirar());
+            sacarCliente();
+            System.out.println(clientesEnBanco);
+            System.out.println(clientesEspera);
+            
         }
+        
 
         
     }
