@@ -12,16 +12,16 @@ public class Banco {
     private ColaAbstracta<Cliente>[] colas;
     private ColaAbstracta<Cliente> colaTemp;
     private Cliente[] clientes;
-    private final int LIMITECOLA = 10;
+    private final int LIMITECOLA = 10, CANTIDADCLIENTES = 500;
     private Cliente clienteT;
     private int clientesEspera, clientesEnBanco;
 
 
     public Banco() {
         colas = new ColaListasC[4];
-        colaTemp = new ColaListasC(50);
-        clientes = new Cliente[50];
-        clientesEspera = 50;
+        colaTemp = new ColaListasC(CANTIDADCLIENTES);
+        clientes = new Cliente[CANTIDADCLIENTES];
+        clientesEspera = CANTIDADCLIENTES;
         clientesEnBanco = 0;
         for(int i = 0; i < colas.length; i++) {
             colas[i] = new ColaListasC(LIMITECOLA);
@@ -47,11 +47,7 @@ public class Banco {
         
         for(Cliente c: clientes)
             colaTemp.agregar(c);
-        
-        //for(int i =0; i < clientes.length; i++)
-         //   System.out.println(colaTemp.retirar().getT1());
-        
-       
+
         
         
     }
@@ -80,7 +76,7 @@ public class Banco {
     public void sacarCliente() {
         if(clientesEnBanco > 0) {
             for(ColaAbstracta<Cliente> c: colas) {
-                if(!c.vacio())
+                if(!c.vacio()) {
                     if(clientesEspera >0) {
                         if((c.verPrimero().getT1() + c.verPrimero().getT2()) < colaTemp.verPrimero().getT1()) {
                             System.out.println("Cliente " + c.verPrimero() + " se ha retirado");
@@ -95,6 +91,7 @@ public class Banco {
                         clientesEnBanco--;
                         
                     }
+                }
 
             }
         }

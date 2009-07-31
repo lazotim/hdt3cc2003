@@ -40,9 +40,6 @@ public class ColaArreglos<E> extends ColaAbstracta {
 
         }
         
-        //for(Object o: elementos)
-        //    System.out.println(o);
-        
         
     }
 
