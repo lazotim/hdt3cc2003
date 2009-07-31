@@ -90,9 +90,10 @@ public class Banco {
                         }
                     }
                     else {
+                        System.out.println("Cliente " + c.verPrimero() + " se ha retirado");
                         c.retirar();
                         clientesEnBanco--;
-                        System.out.println("Cliente " + c.verPrimero() + " se ha retirado");
+                        
                     }
 
             }
@@ -105,8 +106,6 @@ public class Banco {
             //sacarCliente();
             agregarCliente(colaTemp.retirar());
             sacarCliente();
-            System.out.println(clientesEnBanco);
-            System.out.println(clientesEspera);
             
         }
         
