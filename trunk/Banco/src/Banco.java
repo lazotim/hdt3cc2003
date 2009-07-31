@@ -12,7 +12,7 @@ public class Banco {
     private ColaAbstracta<Cliente>[] colas;
     private ColaAbstracta<Cliente> colaTemp;
     private Cliente[] clientes;
-    private final int LIMITECOLA = 10, CANTIDADCLIENTES = 500;
+    private final int LIMITECOLA = 10, CANTIDADCLIENTES = 1000;
     private Cliente clienteT;
     private int clientesEspera, clientesEnBanco;
 
@@ -57,17 +57,35 @@ public class Banco {
         int colaVacia = 0;
         
         if(clientesEspera >0) {
-            for(int i =0; i < colas.length; i++) {
-                if(colas[i].cantidad() <= colas[colaVacia].cantidad()) {
-                    colaVacia = i;
+            try {
+            if(clientesEnBanco < 40) {
+                for(int i =0; i < colas.length; i++) {
+                    if(colas[i].cantidad() < colas[colaVacia].cantidad()) {
+                        colaVacia = i;
+                    }
                 }
+
+                colas[colaVacia].agregar(cliente);
+                clientesEspera --;
+                clientesEnBanco ++;
+
+                System.out.println("Cliente " + cliente + " ingresado en cola #" + (colaVacia+1) );
             }
+            else
+            {
+                while(clientesEspera > 0) {
+                    colaTemp.retirar();
+                    clientesEspera --;
+                }
+                throw new FullException("FullException");
 
-            colas[colaVacia].agregar(cliente);
-            clientesEspera --;
-            clientesEnBanco ++;
 
-            System.out.println("Cliente " + cliente + " ingresado en cola #" + (colaVacia+1) );
+            }
+            }
+            catch (FullException FE) {
+                System.out.println("El banco se ha llenado");
+                System.out.println("Todos los clientes que quedaron fuera se han ido");
+            }
 
         }
         

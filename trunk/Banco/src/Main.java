@@ -4,8 +4,6 @@
 //David Ytzen Hsieh Lo #08825
 
 
-import java.util.Random;
-import java.util.Scanner;
 
 /**
  *
@@ -17,10 +15,8 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Scanner lector = new Scanner(System.in);
+   
         Banco banco = new Banco();
-
-        Random random = new Random();
 
         banco.avanzar();
         
