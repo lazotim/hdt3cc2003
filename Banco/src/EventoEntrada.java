@@ -11,6 +11,14 @@ public class EventoEntrada extends Evento {
 
     private int cola;
 
+    /**
+     * 
+     * @param minEvento
+     * @param t1
+     * @param t2
+     * @param tiempos
+     * @param cola
+     */
     public EventoEntrada(int minEvento, int t1, int t2, String tiempos, int cola) {
         minutoEvento = minEvento;
         this.t1 = t1;

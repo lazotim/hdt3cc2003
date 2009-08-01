@@ -5,18 +5,27 @@
 
 /**
  *
+ * @param <E>
  * @author dvdhl89
  */
 public class ColaListasC<E> extends ColaAbstracta<E> {
 
     private Nodo<E> cola;
 
+    /**
+     *
+     * @param limite
+     */
     public ColaListasC(int limite) {
         cantidad = 0;
         this.limite = limite;
         cola = null;
     }
 
+    /**
+     *
+     * @param dato
+     */
     @Override
     public void agregar(Object dato) {
 
@@ -47,6 +56,10 @@ public class ColaListasC<E> extends ColaAbstracta<E> {
         }
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public E retirar() {
 
@@ -73,6 +86,10 @@ public class ColaListasC<E> extends ColaAbstracta<E> {
         return (E)temp.dato();
     }
 
+    /**
+     *
+     * @return
+     */
     public E verPrimero() {
         if(vacio())
             return null;
@@ -80,6 +97,10 @@ public class ColaListasC<E> extends ColaAbstracta<E> {
         return (E)cola.dato();
     }
 
+    /**
+     * 
+     * @return
+     */
     public E verUltimo() {
 
         Nodo<E> temp = cola;

@@ -15,7 +15,6 @@ public class Banco {
     private ColaAbstracta<Cliente>[] colas;
     private ColaAbstracta<Cliente> colaTemp;
     private ColaAbstracta<Evento> listaEventos;
-    private Evento[] eventos;
     private Cliente[] clientes;
     private final int LIMITECOLA = 10, CANTIDADCLIENTES = 50;
     private Cliente clienteT;
@@ -26,17 +25,16 @@ public class Banco {
      *
      */
     public Banco() {
-        eventos = new Evento[CANTIDADCLIENTES+1];
         totalPermanencia = 0;
-        listaEventos = new ColaListasC(CANTIDADCLIENTES *2);
+        listaEventos = new ColaArreglos(CANTIDADCLIENTES *2);
         minutoActual = 0;
-        colas = new ColaListasC[4];
-        colaTemp = new ColaListasC(CANTIDADCLIENTES);
+        colas = new ColaArreglos[4];
+        colaTemp = new ColaArreglos(CANTIDADCLIENTES);
         clientes = new Cliente[CANTIDADCLIENTES];
         clientesEspera = CANTIDADCLIENTES;
         clientesEnBanco = 0;
         for(int i = 0; i < colas.length; i++) {
-            colas[i] = new ColaListasC(LIMITECOLA);
+            colas[i] = new ColaArreglos(LIMITECOLA);
         }
 
         for(int i = 0; i < clientes.length; i++) {

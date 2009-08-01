@@ -12,11 +12,17 @@ import static org.junit.Assert.*;
  */
 public class ColaListasCTest {
 
+    /**
+     *
+     */
     public ColaListasCTest() {
     }
 
 
 
+    /**
+     * 
+     */
     @Test
     public void testAgregar() {
         System.out.println("agregar");
@@ -29,6 +35,9 @@ public class ColaListasCTest {
         assertEquals(expResult, result);
     }
 
+    /**
+     *
+     */
     @Test
     public void testRetirar() {
         System.out.println("retirar");
@@ -42,6 +51,9 @@ public class ColaListasCTest {
         assertEquals(expResult, result);
     }
 
+    /**
+     *
+     */
     @Test
     public void testAgregarRetirar() {
         System.out.println("Agregar y Retirar");
@@ -54,6 +66,9 @@ public class ColaListasCTest {
         assertEquals(expResult, result);
     }
     
+    /**
+     *
+     */
     @Test
     public void testVerPrimero() {
         System.out.println("verPrimero");
@@ -66,6 +81,9 @@ public class ColaListasCTest {
         assertEquals(expResult, result);
     }
 
+    /**
+     *
+     */
     @Test
     public void testVerUltimo() {
         System.out.println("verUltimo");
