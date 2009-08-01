@@ -5,6 +5,7 @@
 
 /**
  *
+ * @param <E>
  * @author dvdhl89
  */
 public class ColaArreglos<E> extends ColaAbstracta {
@@ -12,6 +13,10 @@ public class ColaArreglos<E> extends ColaAbstracta {
     private Object[] elementos;
     private int inicio, fin, indice;
 
+    /**
+     * 
+     * @param limite
+     */
     public ColaArreglos(int limite) {
         cantidad = 0;
         this.limite = limite;
@@ -22,6 +27,10 @@ public class ColaArreglos<E> extends ColaAbstracta {
 
     }
 
+    /**
+     *
+     * @param dato
+     */
     @Override
     public void agregar(Object dato) {
         try {
@@ -43,6 +52,10 @@ public class ColaArreglos<E> extends ColaAbstracta {
         
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public E retirar() {
         if(cantidad > 0) {
@@ -56,6 +69,10 @@ public class ColaArreglos<E> extends ColaAbstracta {
             return null;
     }
 
+    /**
+     *
+     * @return
+     */
     public E verPrimero() {
         if(vacio())
             return null;
@@ -65,6 +82,10 @@ public class ColaArreglos<E> extends ColaAbstracta {
         
     }
 
+    /**
+     *
+     * @return
+     */
     public E verUltimo() {
         if(vacio())
             return null;

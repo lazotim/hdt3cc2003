@@ -11,6 +11,14 @@ public class EventoSalida extends Evento {
 
     private int tPermanencia;
 
+    /**
+     * 
+     * @param minEvento
+     * @param t1
+     * @param t2
+     * @param tiempos
+     * @param tPermanencia
+     */
     public EventoSalida(int minEvento, int t1, int t2, String tiempos, int tPermanencia) {
         minutoEvento = minEvento;
         this.t1 = t1;

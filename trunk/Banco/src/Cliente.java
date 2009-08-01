@@ -15,6 +15,9 @@ public class Cliente {
     private int t1, t2, minutoSalida, tiempoEspera;
     private Random random;
 
+    /**
+     *
+     */
     public Cliente() {
         
         random = new Random();
@@ -22,34 +25,63 @@ public class Cliente {
         t2 = random.nextInt(30) + 1;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getT1() {
         return t1;
     }
 
+    /**
+     * 
+     * @return
+     */
     public int getT2() {
         return t2;
     }
 
+    @Override
     public String toString() {
         return "("+t1 +", " + t2 + ")";
     }
 
+    /**
+     *
+     * @param tS
+     */
     public void setMinutoSalida(int tS) {
         minutoSalida = tS;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getMinutoSalida() {
         return minutoSalida;
     }
 
+    /**
+     *
+     * @param tE
+     */
     public void setTiempoEspera(int tE) {
         tiempoEspera = tE;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getTiempoEspera() {
         return tiempoEspera;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getTiempos() {
         return "(" + t1 + ", " + t2 + ")";
     }

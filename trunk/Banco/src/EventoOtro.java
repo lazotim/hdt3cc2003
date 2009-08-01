@@ -11,10 +11,15 @@ public class EventoOtro extends Evento {
 
     String descripcion;
 
+    /**
+     * 
+     * @param descripcion
+     */
     public EventoOtro(String descripcion) {
         this.descripcion = descripcion;
     }
 
+    @Override
     public String toString() {
         return descripcion;
     }
