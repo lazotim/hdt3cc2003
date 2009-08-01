@@ -14,7 +14,8 @@ public class Banco {
 
     private ColaAbstracta<Cliente>[] colas;
     private ColaAbstracta<Cliente> colaTemp;
-    private ColaAbstracta<String> listaEventos;
+    private ColaAbstracta<Evento> listaEventos;
+    private Evento[] eventos;
     private Cliente[] clientes;
     private final int LIMITECOLA = 10, CANTIDADCLIENTES = 50;
     private Cliente clienteT;
@@ -22,6 +23,7 @@ public class Banco {
 
 
     public Banco() {
+        eventos = new Evento[CANTIDADCLIENTES+1];
         totalPermanencia = 0;
         listaEventos = new ColaListasC(CANTIDADCLIENTES *2);
         minutoActual = 0;
@@ -90,8 +92,8 @@ public class Banco {
 
 
                     //System.out.println("Cliente " + cliente + " ingresado en cola #" + (colaVacia+1) );
-                    listaEventos.agregar("Minuto " + cliente.getT1() + ": Cliente " + cliente + " ingresado en cola #" + (colaVacia+1) );
-
+                    //listaEventos.agregar("Minuto " + cliente.getT1() + ": Cliente " + cliente + " ingresado en cola #" + (colaVacia+1) );
+                    listaEventos.agregar(new EventoEntrada(cliente.getT1(), cliente.getT1(), cliente.getT2(), cliente.getTiempos(), colaVacia+1));
                 }
                 else
                 {
@@ -107,9 +109,12 @@ public class Banco {
             }
             catch (FullException FE) {
                 //System.out.println("El banco se ha llenado");
-                listaEventos.agregar("El banco se ha llenado");                
+                //listaEventos.agregar("El banco se ha llenado");
+                listaEventos.agregar(new EventoOtro("El banco se ha llenado."));
                 //System.out.println("Todos los clientes que quedaron fuera se han ido");
-                listaEventos.agregar("Todos los clientes que quedaron fuera se han ido");
+                //listaEventos.agregar("Todos los clientes que quedaron fuera se han ido");
+                listaEventos.agregar(new EventoOtro("Todos los clientes que quedaron fuera se han ido"));
+
             }
 
         }
@@ -129,15 +134,16 @@ public class Banco {
                             minutoActual = c.verPrimero().getMinutoSalida();
 
                             //System.out.println("Minuto " + (c.verPrimero().getT1() + c.verPrimero().getT2()) + ": Cliente " + c.verPrimero() + " se ha retirado");
-                            listaEventos.agregar("Minuto " + minutoActual + ": Cliente " + c.verPrimero() + " se ha retirado. Tiempo de permanencia: " + c.verPrimero().getTiempoEspera());
-
+                            //listaEventos.agregar("Minuto " + minutoActual + ": Cliente " + c.verPrimero() + " se ha retirado. Tiempo de permanencia: " + c.verPrimero().getTiempoEspera());
+                            listaEventos.agregar(new EventoSalida(minutoActual, c.verPrimero().getT1(), c.verPrimero().getT2(), c.verPrimero().getTiempos(), c.verPrimero().getTiempoEspera()));
                             c.retirar();
                             clientesEnBanco --;
                         }
                     }
                     else {
                         //System.out.println("Cliente " + c.verPrimero() + " se ha retirado");
-                        listaEventos.agregar("Minuto " + minutoActual + ": Cliente " + c.verPrimero() + " se ha retirado");
+                        //listaEventos.agregar("Minuto " + minutoActual + ": Cliente " + c.verPrimero() + " se ha retirado");
+                        listaEventos.agregar(new EventoSalida(minutoActual, c.verPrimero().getT1(), c.verPrimero().getT2(), c.verPrimero().getTiempos(), 0));
                         c.retirar();
                         clientesEnBanco--;
                         
@@ -162,7 +168,7 @@ public class Banco {
              System.out.println(listaEventos.retirar());
 
          System.out.println("Promedio de permanencia del clente en el banco: " + totalPermanencia/CANTIDADCLIENTES);
-        
+         
 
         
     }
