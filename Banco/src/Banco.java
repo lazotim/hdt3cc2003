@@ -151,7 +151,7 @@ public class Banco {
                     else {
                         //System.out.println("Cliente " + c.verPrimero() + " se ha retirado");
                         //listaEventos.agregar("Minuto " + minutoActual + ": Cliente " + c.verPrimero() + " se ha retirado");
-                        listaEventos.agregar(new EventoSalida(minutoActual, c.verPrimero().getT1(), c.verPrimero().getT2(), c.verPrimero().getTiempos(), 0));
+                        listaEventos.agregar(new EventoSalida(minutoActual, c.verPrimero().getT1(), c.verPrimero().getT2(), c.verPrimero().getTiempos(), c.verPrimero().getTiempoEspera()));
                         c.retirar();
                         clientesEnBanco--;
                         
