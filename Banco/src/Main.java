@@ -4,11 +4,6 @@
 //David Ytzen Hsieh Lo #08825
 
 
-
-/**
- *
- * @author David Hsieh
- */
 public class Main {
 
     /**

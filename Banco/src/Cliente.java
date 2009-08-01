@@ -12,9 +12,8 @@ import java.util.Random;
  */
 public class Cliente {
 
-    private int t1, t2;
+    private int t1, t2, minutoSalida, tiempoEspera;
     private Random random;
-    private String nombre;
 
     public Cliente() {
         
@@ -33,6 +32,22 @@ public class Cliente {
 
     public String toString() {
         return "("+t1 +", " + t2 + ")";
+    }
+
+    public void setMinutoSalida(int tS) {
+        minutoSalida = tS;
+    }
+
+    public int getMinutoSalida() {
+        return minutoSalida;
+    }
+
+    public void setTiempoEspera(int tE) {
+        tiempoEspera = tE;
+    }
+
+    public int getTiempoEspera() {
+        return tiempoEspera;
     }
 /*
     public void setT1(int t1) {

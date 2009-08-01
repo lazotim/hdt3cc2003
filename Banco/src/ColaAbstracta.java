@@ -22,6 +22,8 @@ public abstract class ColaAbstracta<E> implements InterfazCola{
 
     public abstract E verPrimero();
 
+    public abstract E verUltimo();
+
     public boolean lleno() {
         if(cantidad >= limite)
             return true;
