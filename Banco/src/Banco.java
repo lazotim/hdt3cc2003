@@ -18,10 +18,11 @@ public class Banco {
     private Cliente[] clientes;
     private final int LIMITECOLA = 10, CANTIDADCLIENTES = 50;
     private Cliente clienteT;
-    private int clientesEspera, clientesEnBanco, minutoActual;
+    private int clientesEspera, clientesEnBanco, minutoActual, totalPermanencia;
 
 
     public Banco() {
+        totalPermanencia = 0;
         listaEventos = new ColaListasC(CANTIDADCLIENTES *2);
         minutoActual = 0;
         colas = new ColaListasC[4];
@@ -73,10 +74,12 @@ public class Banco {
                     if(colas[colaVacia].vacio()) {
                         cliente.setMinutoSalida(cliente.getT1() + cliente.getT2());
                         cliente.setTiempoEspera(cliente.getT2());
+                        totalPermanencia += cliente.getTiempoEspera();
                     }
                     else {
                         cliente.setMinutoSalida(colas[colaVacia].verUltimo().getMinutoSalida()+cliente.getT2());
                         cliente.setTiempoEspera(cliente.getMinutoSalida()-cliente.getT1());
+                        totalPermanencia += cliente.getTiempoEspera();
 
                     }
                     //System.out.println(cliente.getTiempoSalida());
@@ -126,7 +129,7 @@ public class Banco {
                             minutoActual = c.verPrimero().getMinutoSalida();
 
                             //System.out.println("Minuto " + (c.verPrimero().getT1() + c.verPrimero().getT2()) + ": Cliente " + c.verPrimero() + " se ha retirado");
-                            listaEventos.agregar("Minuto " + minutoActual + ": Cliente " + c.verPrimero() + " se ha retirado");
+                            listaEventos.agregar("Minuto " + minutoActual + ": Cliente " + c.verPrimero() + " se ha retirado. Tiempo de permanencia: " + c.verPrimero().getTiempoEspera());
 
                             c.retirar();
                             clientesEnBanco --;
@@ -145,7 +148,7 @@ public class Banco {
         }
     }
 
-    public void avanzar() {
+    public void iniciar() {
 
         minutoActual = clientes[0].getT1();
         
@@ -153,19 +156,12 @@ public class Banco {
             sacarCliente();
             agregarCliente(colaTemp.retirar());
 
-            //sacarCliente();
-//
-  //          System.out.println(colas[0].cantidad());
-    //        System.out.println(colas[1].cantidad());
-      //      System.out.println(colas[2].cantidad());
-        //    System.out.println(colas[3].cantidad());
-
         }
 
          while(!listaEventos.vacio())
              System.out.println(listaEventos.retirar());
 
-         System.out.println("Promedio de permanencia del clente en el banco: ");
+         System.out.println("Promedio de permanencia del clente en el banco: " + totalPermanencia/CANTIDADCLIENTES);
         
 
         
