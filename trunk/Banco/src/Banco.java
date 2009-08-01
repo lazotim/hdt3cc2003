@@ -22,6 +22,9 @@ public class Banco {
     private int clientesEspera, clientesEnBanco, minutoActual, totalPermanencia;
 
 
+    /**
+     *
+     */
     public Banco() {
         eventos = new Evento[CANTIDADCLIENTES+1];
         totalPermanencia = 0;
@@ -61,6 +64,10 @@ public class Banco {
         
     }
 
+    /**
+     *
+     * @param cliente
+     */
     public void agregarCliente(Cliente cliente) {
 
         int colaVacia = 0;
@@ -121,6 +128,9 @@ public class Banco {
         
     }
 
+    /**
+     *
+     */
     public void sacarCliente() {
         if(clientesEnBanco > 0) {
             for(ColaAbstracta<Cliente> c: colas) {
@@ -154,6 +164,9 @@ public class Banco {
         }
     }
 
+    /**
+     *
+     */
     public void iniciar() {
 
         minutoActual = clientes[0].getT1();
