@@ -13,39 +13,9 @@ public class Main {
    
         Banco banco = new Banco();
 
-        banco.avanzar();
+        banco.iniciar();
         
-        //for(int i = 0; i < 10; i++)
-        //    System.out.println(random.nextInt(200));
-
-
-        /*
-        InterfazCola<String> cola = new ColaListasC(7);
-        int opcion = ' ';
-
         
-
-        while (opcion != 's') {
-
-
-
-          System.out.println("a: Agregar, r: Retirar, s: Salir");
-          opcion = lector.next().charAt(0);
-
-          switch(opcion) {
-              case 'a':
-                  cola.agregar(lector.next());
-              break;
-
-              case 'r':
-                  System.out.println(cola.retirar());
-              break;
-
-              default:
-                  System.out.println("O incorrecta");
-          }
-    
-        }*/
     }
 
 }
