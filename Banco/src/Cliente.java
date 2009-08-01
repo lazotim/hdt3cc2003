@@ -23,6 +23,7 @@ public class Cliente {
         random = new Random();
         t1 = random.nextInt(480) + 1;
         t2 = random.nextInt(30) + 1;
+        tiempoEspera = t2;
     }
 
     /**

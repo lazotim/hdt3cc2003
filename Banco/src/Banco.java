@@ -26,15 +26,15 @@ public class Banco {
      */
     public Banco() {
         totalPermanencia = 0;
-        listaEventos = new ColaArreglos(CANTIDADCLIENTES *2);
+        listaEventos = new ColaListasC(CANTIDADCLIENTES *2);
         minutoActual = 0;
-        colas = new ColaArreglos[4];
-        colaTemp = new ColaArreglos(CANTIDADCLIENTES);
+        colas = new ColaListasC[4];
+        colaTemp = new ColaListasC(CANTIDADCLIENTES);
         clientes = new Cliente[CANTIDADCLIENTES];
         clientesEspera = CANTIDADCLIENTES;
         clientesEnBanco = 0;
         for(int i = 0; i < colas.length; i++) {
-            colas[i] = new ColaArreglos(LIMITECOLA);
+            colas[i] = new ColaListasC(LIMITECOLA);
         }
 
         for(int i = 0; i < clientes.length; i++) {
