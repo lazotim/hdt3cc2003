@@ -66,5 +66,18 @@ public class ColaListasCTest {
         assertEquals(expResult, result);
     }
 
+    @Test
+    public void testVerUltimo() {
+        System.out.println("verUltimo");
+    ColaAbstracta instance = new ColaListasC(5);
+        instance.agregar("PRIMERO");
+        instance.agregar("SEGUNDO");
+        instance.agregar("TERCERO");
+        instance.agregar("CUARTO");
+        Object result = instance.verUltimo();
+        Object expResult = "CUARTO";
+        assertEquals(expResult, result);
+    }
+
 
 }

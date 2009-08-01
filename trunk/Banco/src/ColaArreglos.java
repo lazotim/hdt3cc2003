@@ -65,4 +65,11 @@ public class ColaArreglos<E> extends ColaAbstracta {
         
     }
 
+    public E verUltimo() {
+        if(vacio())
+            return null;
+        return (E)elementos[fin-1];
+
+    }
+
 }

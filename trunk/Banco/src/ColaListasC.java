@@ -80,6 +80,17 @@ public class ColaListasC<E> extends ColaAbstracta<E> {
         return (E)cola.dato();
     }
 
+    public E verUltimo() {
+
+        Nodo<E> temp = cola;
+        if(cantidad == 1)
+            return (E)cola.dato();
+        if(vacio())
+            return null;
+        temp = temp.getProximo();
+        return  (E) cola.getProximo().dato();
+    }
+
 
 
 }
