@@ -49,6 +49,10 @@ public class Cliente {
     public int getTiempoEspera() {
         return tiempoEspera;
     }
+
+    public String getTiempos() {
+        return "(" + t1 + ", " + t2 + ")";
+    }
 /*
     public void setT1(int t1) {
         this.t1 = t1;

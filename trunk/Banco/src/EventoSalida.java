@@ -21,6 +21,6 @@ public class EventoSalida extends Evento {
 
     @Override
     public String toString() {
-        return "Minuto: " + minutoEvento + "| Cliente " + tiempos + " se ha retirado. Tiempo de permanencia" + tPermanencia;
+        return "Minuto: " + minutoEvento + "| Cliente " + tiempos + " se ha retirado. Tiempo de permanencia: " + tPermanencia;
     }
 }
